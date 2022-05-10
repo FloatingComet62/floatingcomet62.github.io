@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular';
+  
+  title = 'FloatingComet62';
+  random = `${1+Math.round(Math.random() * 19)}`;
+
 }
