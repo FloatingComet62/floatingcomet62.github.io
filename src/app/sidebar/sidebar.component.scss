@@ -45,6 +45,7 @@
   padding-left: calc(var(--navbar-width) / 4);
   padding: 1rem;
   gap: 1rem;
+  cursor: pointer;
   
   &>span{
     display: none;

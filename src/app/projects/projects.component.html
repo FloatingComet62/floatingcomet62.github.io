@@ -1,0 +1,23 @@
+<div id="body">
+    <div id="title">Actual Good Content I make</div>
+    <img id="discord" src='/assets/discord/{{ Discordstatus }}.svg' alt="{{ Discordstatus }}" width="50" height="50" />
+    <div id="projects">
+        <div class="mover" (click)="switch(false)">
+            <img src="/assets/ProjectArrow.svg" alt="Arrow" class="arrow left" width="40" height="40">
+        </div>
+        <div id="project">
+            <div id="projectTitle">{{ Projects[current].title }}</div>
+            <div id="description">
+                <div id="info">{{ Projects[current].description }}</div>
+                <img src="{{ Projects[current].image }}" alt="Logo" id="logo" width="200" height="200">
+            </div>
+            <div id="buttons">
+                <div class="button" (click)="goto(Projects[current].tryLink)">Try It</div>
+                <div class="button" (click)="goto(Projects[current].codeLink)">Source Code</div>
+            </div>
+        </div>
+        <div class="mover" (click)="switch(true)">
+            <img src="/assets/ProjectArrow.svg" alt="Arrow" class="arrow right" width="40" height="40">
+        </div>
+    </div>
+</div>

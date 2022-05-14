@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 interface SidebarItem {
   title: string;
   icon: string;
+  link: string;
   class?: string;
 }
 
@@ -17,25 +18,34 @@ export class SidebarComponent {
     {
       icon: '/assets/sidebar/Arrow.svg',
       title: 'FloatingComet62',
-      class: 'arrow'
+      class: 'arrow',
+      link: '/'
     },
     {
       icon: '/assets/sidebar/Home.svg',
-      title: 'Home'
+      title: 'Home',
+      link: '/'
     },
     {
       icon: '/assets/sidebar/Projects.svg',
-      title: 'Projects'
+      title: 'Projects',
+      link: '/projects'
     },
     {
       icon: '/assets/sidebar/About me.svg',
-      title: 'About me'
+      title: 'About me',
+      link: '/about'
     },
     {
       icon: '/assets/sidebar/Contact.svg',
       title: 'Contact',
-      class: 'contact'
+      class: 'contact',
+      link: '/contact'
     }
   ]
+
+  goto(link: string){
+    location.href = link;
+  }
 
 }
