@@ -1,12 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import LanyardResponse from 'public/Lanyard'
-
-interface Spotify {
-    name: string
-    artist: string
-    link: string
-    isplaying: boolean
-}
+import { Spotify } from 'public/dry'
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     const data: LanyardResponse = await (await fetch('https://api.lanyard.rest/v1/users/701059544574591006')).json()

@@ -1,20 +1,7 @@
 import styles from '@pstyles/projects.module.scss'
 import Image from 'next/image'
-import { useState } from 'react';
-
-interface Projects{
-    title: string;
-    description: string;
-    tryLink: string;
-    codeLink: string;
-    image: string;
-}
-interface Spotify {
-    name: string
-    artist: string
-    link: string
-    isplaying: boolean
-}
+import { useState } from 'react'
+import { Projects, Spotify, lanyard } from 'public/dry'
 
 export default function Home({ projects, domain, spotify, discord }: { projects: Projects[], domain: string, spotify: Spotify, discord: string }) {
     const [ current, setCurrent ] = useState<number>(0);
@@ -129,13 +116,5 @@ export async function getServerSideProps({ req }){
       spotify: data.spotify,
       discord: data.discord
     }
-  }
-}
-
-async function lanyard(): Promise<{ spotify: Spotify, discord: string }>{
-  const data = await (await fetch('http://localhost:3000/api/lanyard')).json()
-  return {
-    spotify: data.spotify,
-    discord: data.discord
   }
 }

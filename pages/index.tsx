@@ -1,12 +1,6 @@
 import styles from '@pstyles/index.module.scss'
 import Image from 'next/image'
-
-interface Spotify {
-  name: string
-  artist: string
-  link: string
-  isplaying: boolean
-}
+import { Spotify, lanyard } from 'public/dry'
 
 export default function Home({ domain, spotify, discord }: { domain: string, spotify: Spotify, discord: string }) {  
   return (
@@ -34,13 +28,5 @@ export async function getServerSideProps({ req }){
       spotify: data.spotify,
       discord: data.discord
     }
-  }
-}
-
-async function lanyard(): Promise<{ spotify: Spotify, discord: string }>{
-  const data = await (await fetch('http://localhost:3000/api/lanyard')).json()
-  return {
-    spotify: data.spotify,
-    discord: data.discord
   }
 }
