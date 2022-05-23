@@ -1,20 +1,12 @@
+@import "vars.scss";
 
-
-:root{
-  --dark-purple: #382037;
-  --light-purple: #8843A0;
-  --background: #242424;
-  --black: #141414;
-  --navbar-width: 6rem;
-  --navbar-speed: 150ms;
-}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Ubuntu', serif;
-  background-color: var(--background);
+  font-family: $font;
+  background-color: $background;
 }
 
 a {

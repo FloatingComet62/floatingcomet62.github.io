@@ -1,32 +1,37 @@
-#body{
+@import "../vars.scss";
+
+.body{
     display: grid;
     place-items: center;
     height: calc(100vmin - 2.5rem);
     filter: opacity(1);
 }
-#msg{
+.msg{
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
     color: #ef79ab;
 }
 .spotify{
-    position: auto;
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 2rem;
-    background-color: #181818;
+    background-color: $black;
     padding: 2rem;
     border-radius: 1rem;
-    align-items: center;
     div{
         display: flex;
         flex-direction: column;
         color: #ffffff;
         a{
-            color: var(--light-purple);
+            color: $light-purple;
             font-size: large;
             font-weight: bold;
         }
     }
+}
+
+.off{
+    filter: opacity(0);
 }

@@ -1,0 +1,65 @@
+@import "../vars.scss";
+
+.navbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $navbar-width;
+  background-color: $dark-purple;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  padding: {
+    top: 2rem;
+    bottom: 2rem;
+  }
+
+  &:hover{
+    width: 16rem;
+    .text{
+      display: block;
+    }
+
+    .arrowimage{
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: {
+    top: 1rem;
+    bottom: 1rem;
+    left: calc($navbar-width / 4);
+  }
+  gap: 1rem;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $background;
+  }
+}
+
+.text{
+  display: none;
+  font-family: $font;
+  font-size: large;
+  font-weight: bolder;
+  color: $light-purple;
+}
+
+.arrow{
+  margin-bottom: auto;
+}
+.arrowimage{
+  transform: rotate(180deg);
+  transition: ease $navbar-speed all;
+}
+
+.contact{
+  margin-top: auto;
+}
