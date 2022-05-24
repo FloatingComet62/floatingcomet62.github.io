@@ -13,7 +13,8 @@ interface Projects{
 }
 
 async function lanyard(): Promise<{ spotify: Spotify, discord: string }>{
-    const data = await (await fetch('http://localhost:3000/api/lanyard')).json()
+    // require('dotenv').config();
+    const data = await (await fetch(`${process.env.DOMAIN}/api/lanyard`)).json()
     return {
         spotify: data.spotify,
         discord: data.discord

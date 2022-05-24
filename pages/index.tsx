@@ -21,7 +21,7 @@ export default function Home({ domain, spotify, discord }: { domain: string, spo
 }
 
 export async function getServerSideProps({ req }){
-  const data = await lanyard();
+  const data = await lanyard()
   return {
     props: {
       domain: req.headers.host,

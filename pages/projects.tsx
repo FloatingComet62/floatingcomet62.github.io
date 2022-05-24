@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Projects, Spotify, lanyard } from 'public/dry'
 
-export default function Home({ projects, domain, spotify, discord }: { projects: Projects[], domain: string, spotify: Spotify, discord: string }) {
+export default function Home({ projects, discord }: { projects: Projects[], domain: string, spotify: Spotify, discord: string }) {
     const [ current, setCurrent ] = useState<number>(0);
 
     function change(direction: boolean){
@@ -24,7 +24,7 @@ export default function Home({ projects, domain, spotify, discord }: { projects:
     <>
     <div className={ styles.body }>
     <div className={ styles.title }>Actual Good Content I make</div>
-    <img className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} />
+    <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} />
     <div className={ styles.projects }>
         <div className={ styles.mover } onClick={() => change(false)} >
             <Image src="/ProjectArrow.svg" alt="Arrow" className={`${ styles.arrow } ${ styles.left }`} width={40} height={40} />
@@ -108,7 +108,7 @@ export async function getServerSideProps({ req }){
           image: '/projects/Chess.png'
         }
   ]
-  const data = await lanyard();
+  const data = await lanyard()
   return {
     props: {
       projects: Projects,
