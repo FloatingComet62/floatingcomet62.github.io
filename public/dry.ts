@@ -1,3 +1,5 @@
+import { loadEnvConfig } from '@next/env'
+
 interface Spotify {
     name: string
     artist: string
@@ -13,7 +15,8 @@ interface Projects{
 }
 
 async function lanyard(): Promise<{ spotify: Spotify, discord: string }>{
-    // require('dotenv').config();
+    const projectDir = process.cwd()
+    loadEnvConfig(projectDir)
     const data = await (await fetch(`${process.env.DOMAIN}/api/lanyard`)).json()
     return {
         spotify: data.spotify,
