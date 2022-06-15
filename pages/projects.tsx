@@ -3,11 +3,15 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Projects, lanyard } from 'public/dry'
 
+function goto(link: string) {
+    if (link!='') location.href = link;
+}
+
 export default function Home({ projects, discord }: { projects: Projects[], discord: string }) {
     const [ current, setCurrent ] = useState<number>(0);
 
-    function change(direction: boolean){
-        if (direction){
+    function change(direction: boolean) {
+        if (direction) {
             if (current+1>=projects.length) setCurrent(0);
             else setCurrent(current + 1);
         } else {
@@ -16,10 +20,6 @@ export default function Home({ projects, discord }: { projects: Projects[], disc
         }
     }
     
-    function goto(link: string){
-        if (link!='') location.href = link;
-    }
-
     return (
     <>
     <div className={ styles.body }>
@@ -29,7 +29,7 @@ export default function Home({ projects, discord }: { projects: Projects[], disc
       <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} />
     </div>
     <div className={ styles.projects }>
-        <div className={ styles.mover } onClick={() => change(false)} >
+        <div className={ styles.mover } onClick={ () => change(false) } >
             <Image src="/ProjectArrow.svg" alt="Arrow" className={`${ styles.arrow } ${ styles.left }`} width={40} height={40} />
         </div>
         <div className={ styles.project }>

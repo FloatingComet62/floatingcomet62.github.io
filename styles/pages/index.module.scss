@@ -10,7 +10,8 @@
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
-    color: #ef79ab;
+    color: $light-purple;
+    text-shadow: 0 0 0.5rem $black;
 }
 .spotify{
     display: flex;

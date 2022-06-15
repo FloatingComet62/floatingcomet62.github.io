@@ -41,7 +41,7 @@ export default function sidebar() {
     const itemsList = items.map((item) => {
         return (
             <>
-            <div className={ item.class ? styles.item + " " + styles[item.class] : styles.item } onClick={() => location.href=item.link}>
+            <div className={ item.class ? styles.item + " " + styles[item.class] : styles.item } key={ item.title } onClick={() => location.href=item.link}>
             <Image className={ item.class ? styles[item.class+"image"]: '' } src={ item.icon } alt={ item.title } width={50} height={50} />
             <div className={ styles.text }>{ item.title }</div>
             </div>

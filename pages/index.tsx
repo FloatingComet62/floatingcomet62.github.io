@@ -1,8 +1,8 @@
 import styles from '@pstyles/index.module.scss'
 import Image from 'next/image'
-import { Spotify, lanyard } from 'public/dry'
+import { lanyard, Spotify } from 'public/dry'
 
-export default function Home({ domain, spotify, discord }: { domain: string, spotify: Spotify, discord: string }) {
+export default function Home({ domain, discord, spotify }: { domain: string, discord: string, spotify: Spotify }) {
   return (
   <div className={ styles.body }>
     <div className={ styles.msg }>
@@ -22,11 +22,12 @@ export default function Home({ domain, spotify, discord }: { domain: string, spo
 
 export async function getServerSideProps({ req }) {
   const data = await lanyard()
+
   return {
     props: {
       domain: req.headers.host,
-      spotify: data.spotify,
-      discord: data.discord
+      discord: data.discord,
+      spotify: data.spotify
     }
   }
 }
