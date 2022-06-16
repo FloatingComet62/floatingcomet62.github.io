@@ -25,7 +25,7 @@ export async function getServerSideProps({ req }) {
 
   return {
     props: {
-      domain: req.headers.host,
+      domain: (req.headers.host as string).replace(/^www\./, ''),
       discord: data.discord,
       spotify: data.spotify
     }
