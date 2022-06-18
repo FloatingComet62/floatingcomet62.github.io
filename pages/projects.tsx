@@ -9,7 +9,7 @@ function goto(link: string) {
 
 export default function Home({ projects, discord }: { projects: Projects[], discord: string }) {
     const [ current, setCurrent ] = useState<number>(0);
-    const onSmallScreen = process.browser ? window.innerWidth < 1000 : false;
+    const onSmallScreen = process.browser ? window.innerWidth < 700 : false;
 
     function change(direction: boolean) {
         if (direction) {
