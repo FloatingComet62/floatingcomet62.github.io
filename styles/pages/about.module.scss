@@ -31,12 +31,6 @@
         text-shadow: 0 0 0.5rem $black;
         margin-bottom: 1rem;
     }
-    .discord{
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-right: 1rem;
-}
 }
 .content{
     background-color: $black;
@@ -107,5 +101,20 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+  .discord {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+    .discord {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 1rem;
     }
 }

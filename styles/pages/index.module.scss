@@ -7,6 +7,10 @@
     filter: opacity(1);
 }
 .msg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
@@ -35,4 +39,10 @@
 
 .off{
     filter: opacity(0);
+}
+
+@media screen and (max-width: 1000px){
+    .line2 {
+        display: none;
+    }
 }
