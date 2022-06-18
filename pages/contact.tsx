@@ -9,6 +9,7 @@ interface Contact {
 }
 
 export default function Home({ contacts, discord }: { contacts: Contact[],  discord: string }) {
+    const onSmallScreen = process.browser ? window.innerWidth < 700 : false;
     const contactList = contacts.map((item) => {
         return (
             <div key={ item.name } className={ styles.contact } onClick={() => location.href = item.link}>
@@ -23,7 +24,7 @@ export default function Home({ contacts, discord }: { contacts: Contact[],  disc
             <div className={ styles.head }>
                 <div></div>
                 <div className={ styles.title }>About me</div>
-                <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} />
+                { onSmallScreen ? <div /> : <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} /> }
             </div>
             <div className={ styles.contacts }>
                 { contactList }

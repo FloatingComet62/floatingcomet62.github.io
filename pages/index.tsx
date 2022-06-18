@@ -6,7 +6,7 @@ export default function Home({ domain, discord, spotify }: { domain: string, dis
   return (
   <div className={ styles.body }>
     <div className={ styles.msg }>
-        Welcome to { domain }<br />Profile Website of FloatingComet62
+        <div className={ styles.line1 }>Welcome to { domain }</div> <div className={ styles.line2 } >Profile Website of FloatingComet62</div>
     </div>
     <div className={ spotify.isplaying ? styles.spotify : styles.off }  >
         <Image src="/Spotify.svg" alt="spotify" width={50} height={50} />

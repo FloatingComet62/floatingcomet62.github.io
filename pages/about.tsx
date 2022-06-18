@@ -24,18 +24,24 @@ function goto(link: string) {
 }
 
 export default function Home({ discord, content, stacks }: Props) {
+    const onSmallScreen = process.browser ? window.innerWidth < 1000 : false;
+
     return (
         <div className={ styles.body }>
           <div className={ styles.head }>
             <div></div>
             <div className={ styles.title }>About me</div>
-            <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} />
+            { onSmallScreen ? <div /> : <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} /> }
           </div>
           <div className={ styles.content }>
             <div className={ styles.text }>
               { content }
             </div>
-            <Image className={ styles.image } src="/Comet.png" alt="Comet" width={300} height={200} layout="fixed" />
+            { 
+              onSmallScreen
+              ? <Image className={ styles.image } src="/Comet.png" alt="Comet" width={150} height={100} layout="fixed" />
+              : <Image className={ styles.image } src="/Comet.png" alt="Comet" width={300} height={200} layout="fixed" />
+            }
           </div>
           <div className={ styles.stacks }>
             <div className={ styles.group }>

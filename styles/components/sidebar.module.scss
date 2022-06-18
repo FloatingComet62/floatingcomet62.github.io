@@ -2,29 +2,14 @@
 
 .navbar{
   position: fixed;
-  top: 0;
-  left: 0;
-  width: $navbar-width;
   background-color: $dark-purple;
-  height: 100vh;
 
   display: flex;
-  flex-direction: column;
   padding: {
     top: 2rem;
     bottom: 2rem;
   }
 
-  &:hover{
-    width: 16rem;
-    .text{
-      display: block;
-    }
-
-    .arrowimage{
-      transform: rotate(0deg);
-    }
-  }
 }
 
 .item{
@@ -38,10 +23,6 @@
   }
   gap: 1rem;
   cursor: pointer;
-
-  &:hover{
-    background-color: $background;
-  }
 }
 
 .text{
@@ -52,14 +33,55 @@
   color: $light-purple;
 }
 
-.arrow{
-  margin-bottom: auto;
-}
-.arrowimage{
-  transform: rotate(180deg);
-  transition: ease $navbar-speed all;
+
+
+@media screen and (max-width: 1000px){
+  .navbar{
+    bottom: 0;
+
+    justify-content: space-evenly;
+    width: 100%;
+    height: 6rem;
+    padding: {
+      top: 2rem;
+      bottom: 2rem;
+    }
+  }
+  .arrow{
+    display: none;
+  }
 }
 
-.contact{
-  margin-top: auto;
+@media screen and (min-width: 1000px) {
+  .navbar {
+    top: 0;
+    left: 0;
+    width: $navbar-width;
+    height: 100vh;
+    flex-direction: column;
+
+    &:hover{
+      width: 16rem;
+      .text{
+        display: block;
+      }
+      .arrowimage{
+        transform: rotate(0deg);
+      }
+    }
+  }
+ .item:hover {
+    background-color: $background;
+  }
+  .arrowimage{
+    transform: rotate(180deg);
+    transition: ease $navbar-speed all;
+  }
+  .arrow{
+    margin-bottom: auto;
+  }
+
+  .contact{
+    margin-top: auto;
+  }
 }
