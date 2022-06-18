@@ -74,6 +74,12 @@
     border-radius: 2rem;
     background-color: $light-purple;
 }
+.discord {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1rem;
+}
 
 @media screen and (max-width: 1000px) {
     .head {
@@ -100,12 +106,6 @@
 }
 
 @media screen and (min-width: 1000px) {
-    .discord {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-right: 1rem;
-    }
     .projects{
         display: flex;
         flex-direction:  row;

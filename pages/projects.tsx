@@ -27,7 +27,7 @@ export default function Home({ projects, discord }: { projects: Projects[], disc
     <div className={ styles.head }>
       <div></div>
       <div className={ styles.title }>Actual Good Content I make</div>
-      { onSmallScreen ? null : <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} />}
+      { onSmallScreen ? null : <Image className={ styles.discord } src={`/discord/${ discord }.svg`} alt={ discord } width={50} height={50} /> }
     </div>
     <div className={ styles.projects }>
         <div className={ styles.mover } onClick={ () => change(false) } >
