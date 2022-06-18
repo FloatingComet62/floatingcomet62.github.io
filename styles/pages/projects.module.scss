@@ -73,6 +73,9 @@
     color: white;
     border-radius: 2rem;
     background-color: $light-purple;
+    &:hover{
+        color: $black;
+    }
 }
 .discord {
     position: absolute;
