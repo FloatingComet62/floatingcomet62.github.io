@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>FloatingComet62</title>
         <meta property="title" content="FloatingComet62" />
         <meta property="type" content="portfolio" />
+        <meta property="description" content="FloatingComet62's Personal Portfolio" />
 
         <meta property="og:title" content="FloatingComet62" />
         <meta property="og:description" content="FloatingComet62's Personal Portfolio" />

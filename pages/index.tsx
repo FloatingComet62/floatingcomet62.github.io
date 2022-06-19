@@ -15,7 +15,7 @@ export default function Home({ domain, discord, spotify }: { domain: string, dis
             { spotify.artist }
         </div>
     </div>
-    <Image src={`/discord/${ discord }.svg`} alt={ discord } width={300} height={300} />
+    <Image src={`/discord/${ discord }.svg`} priority={true} alt={ discord } width={300} height={300} />
   </div>
   )
 }
