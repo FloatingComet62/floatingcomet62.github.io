@@ -61,16 +61,11 @@ img[alt="comet"] {
 }
 
 #socials {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 7rem);
+  grid-template-rows: repeat(2, auto);
   margin-top: 1rem;
-  gap: 1rem;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .cell {
@@ -81,14 +76,26 @@ img[alt="comet"] {
   border-radius: 1rem;
 }
 
-#socials > * > * > img {
+#socials > a > * > img {
   width: 30px;
   height: 30px;
 }
 
-.github { background-color: #161b22; }
-.youtube { background-color: #202020; }
-.twitter { background-color: #15202b; }
-.reddit { background-color: #1a1a1b; }
-.discord { background-color: #36393f; }
-.linkedin { background-color: #17161b; }
+.github {
+  background-color: #161b22;
+}
+.youtube {
+  background-color: #202020;
+}
+.twitter {
+  background-color: #15202b;
+}
+.reddit {
+  background-color: #1a1a1b;
+}
+.discord {
+  background-color: #36393f;
+}
+.linkedin {
+  background-color: #17161b;
+}
