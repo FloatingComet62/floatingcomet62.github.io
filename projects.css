@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.project {
+#projects > a {
   background-color: #1f1e1c;
   padding: 1rem;
   border-radius: 1rem;
@@ -20,11 +20,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-decoration: none;
+  color: white;
+}
+.project:hover {
+  box-shadow: 0px 0px 5px 2px rgb(255, 255, 255);
 }
 
 .project > .logo > img {
   width: 200px;
   height: 200px;
+  border-radius: 1rem;
 }
 
 .content {
@@ -70,6 +76,16 @@
 }
 #fluid3 {
   color: #3946bd;
+}
+
+#comet1 {
+  color: #f04801;
+}
+#comet2 {
+  color: #c03900;
+}
+#comet3 {
+  color: #a13000;
 }
 
 #webchunk1 {
