@@ -65,6 +65,9 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  .langs > ul > li:hover {
+    cursor: pointer;
+  }
   .langs > ul > li > a {
     color: #ffffff;
   }
