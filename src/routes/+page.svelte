@@ -34,6 +34,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 3rem;
+    margin-top: 1rem;
     align-items: center;
   }
   main > main > header {

@@ -2,6 +2,7 @@ body {
   background-color: #303030;
   color: #ffffff;
   font-family: "Comfortaa";
+  margin: 0;
 }
 a {
   text-decoration: none;
