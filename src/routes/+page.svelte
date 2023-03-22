@@ -6,7 +6,7 @@
 <main id="body">
   <main class="info">
     <header>Aargh Rai</header>
-    Aargh Rai is a programmer from India who has been been in the field since 2017
+    Aargh Rai is a programmer from India who has been in the field since 2017
   </main>
   <section class="langs">
     <header>Languages I have experienced</header>
