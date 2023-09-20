@@ -9,6 +9,7 @@ export interface Project {
   icon: string;
   description: string;
   repo: string;
+  color: string;
 }
 
 export const langs: Lang[] = [
@@ -28,33 +29,34 @@ export const projects: Project[] = [
     description:
       "A good programming language handcrafted by the comet himself",
     repo: "https://github.com/FloatingComet62/comrade/",
+    color: "#39BD55"
   },
   {
     name: "CometOS",
     icon: "OS.svg",
     description: "A quick little OS I wrote to learn Rust",
     repo: "https://github.com/FloatingComet62/CometOS",
+    color: "#962C2C"
   },
   {
     name: "FluidDB",
     icon: "FluidDB.svg",
     description: "A key value store database I wrote because I was bored",
     repo: "https://github.com/FloatingComet62/FluidDB",
+    color: "#3946BD"
   },
   {
     name: "ChessUI",
     icon: "ChessUI.png",
     description: "A chess ui I wrote as a pass time while learning chess",
     repo: "https://github.com/FloatingComet62/ChessUI",
+    color: "#444241"
   },
   {
     name: "PainScript",
     icon: "Painscript.svg",
     description: "An esoteric language I wrote",
     repo: "https://github.com/FloatingComet62/PainScript",
-  },
-  {
-    name: "Todo", icon: "Todo.svg", description: "A command line todo app",
-    repo: "https://github.com/FloatingComet62/todo",
+    color: "#45A8BF"
   },
 ];

@@ -37,7 +37,7 @@
 <section>
   <div class="socials">
     {#each socials as social}
-      <a href={social.link}>
+      <a id={social.name.toLowerCase()} href={social.link}>
         <img
           width="50"
           height="50"
@@ -57,7 +57,7 @@
     gap: 4rem;
     align-items: center;
     justify-content: center;
-    background-color: #202020;
+    background: linear-gradient(180deg, #050505 0%, #101010 20%, #202020 100%);
     width: 100%;
     height: 20rem;
   }
@@ -71,5 +71,21 @@
   }
   a:hover {
     opacity: 100%;
+  }
+
+  #discord > img:hover {
+    filter: drop-shadow(0px 0px 10px #8899f7);
+  }
+  #github > img:hover {
+    filter: drop-shadow(0px 0px 10px #303030);
+  }
+  #linkedin > img:hover {
+    filter: drop-shadow(0px 0px 10px #0270ad);
+  }
+  #twitter > img:hover {
+    filter: drop-shadow(0px 0px 10px #1c96e8);
+  }
+  #youtube > img:hover {
+    filter: drop-shadow(0px 0px 10px #f70101);
   }
 </style>

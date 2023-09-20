@@ -1,85 +1,86 @@
 <script lang="ts">
-  import Project from "../lib/Project.svelte";
-  import { langs, projects } from "../stuff";
+  import Socials from "$lib/Socials.svelte";
+  import Project from "$lib/Project.svelte";
+  import { projects } from "../stuff";
+  import { onMount } from "svelte";
+
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let name: any;
+  let msg = "Aargh Rai";
+  let i = 0;
+
+  let show_stuff = false;
+  function afterAnimation() {
+    show_stuff = true;
+    pageScroll();
+  }
+
+  let x = 0;
+  let scroller: number;
+  function pageScroll() {
+    if (x > window.outerHeight / 3.5 - 2) {
+      clearTimeout(scroller);
+      i = 0;
+      return;
+    }
+    x++;
+    window.scrollBy(0, 4);
+    scroller = setTimeout(pageScroll, 1);
+  }
+
+  onMount(() => {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      try {
+        name.innerText = msg
+          .split("")
+          .map((_: string, index: number) => {
+            if (index < iteration) {
+              return msg[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+
+        if (iteration >= msg.length) {
+          clearInterval(interval);
+          afterAnimation();
+        }
+      } catch {}
+
+      iteration += 1 / 5;
+    }, 30);
+  });
+
+  let project = projects[i];
 </script>
 
 <main id="body">
-  <main class="info">
-    <header>Aargh Rai</header>
-    Aargh Rai is a programmer from India who has been in the field since 2017
-  </main>
-  <section class="langs">
-    <header>Languages I have experienced</header>
-    <ul>
-      {#each langs as lang}
-        <li style={`background-color: ${lang.color}`}>
-          <a href={lang.link}>{lang.name}</a>
-        </li>
-      {/each}
-    </ul>
-  </section>
-  <section class="projects">
-    <header>My Projects</header>
-    <ul>
-      {#each projects as prj}
-        <Project {...prj} />
-      {/each}
-    </ul>
-  </section>
+  <div class="title" bind:this={name} />
 </main>
+{#if show_stuff}
+  <main class="project">
+    <Project {...project} />
+  </main>
+  <Socials />
+{/if}
 
 <style>
   #body {
+    background-color: #050505;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 1rem;
     align-items: center;
+    justify-content: center;
   }
-  main > main > header {
-    font-size: 5rem;
+  .title {
+    font-size: 15vw;
   }
-  main > * {
-    text-align: center;
-  }
-  .info {
+  .project {
+    margin-top: 10rem;
+
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 5rem;
-    margin-bottom: 2rem;
-  }
-  .langs {
-    display: flex;
-    flex-direction: column;
-  }
-  .langs > ul {
-    list-style-type: none;
-    display: flex;
-    gap: 1rem;
-  }
-  .langs > ul > li {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .langs > ul > li:hover {
-    cursor: pointer;
-  }
-  .langs > ul > li > a {
-    color: #ffffff;
-  }
-  .langs > header {
-    font-size: 2rem;
-  }
-  .projects > ul {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: auto auto auto;
-  }
-  .projects > header {
-    font-size: 2rem;
+    align-items: center;
   }
 </style>
