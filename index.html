@@ -20,13 +20,21 @@
             background-color: #909090;
         }
 
+        @font-face {
+            font-family: 'font';
+            src: url('./assets/font.ttf');
+        }
+
         body {
             overflow-x: hidden;
-            background-color: #050505;
+            background-image: url('./assets/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-family: 'font';
         }
 
         .info {
@@ -38,6 +46,7 @@
 
         .time {
             opacity: 0.6;
+            color: rgb(87, 44, 85);
         }
 
         label {
@@ -45,6 +54,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 2rem;
+            backdrop-filter: blur(25px);
+            padding: 2rem;
+            width: 100%;
+            border-top-right-radius: 2rem;
+            border-bottom-right-radius: 2rem;
         }
 
         .circle {
@@ -53,302 +68,450 @@
             align-items: center;
             font-size: 2rem;
             gap: 0.5rem;
+            backdrop-filter: blur(50px);
+            padding: 2rem;
+            border-top-left-radius: 2rem;
+            border-bottom-left-radius: 2rem;
         }
 
-        img {
+        .circle>img {
             border-radius: 2rem;
             width: 256px;
+            min-height: 196px;
         }
 
         .big_message {
             font-size: 5rem;
+            margin-top: calc(50vh - 2.5rem);
+            margin-bottom: calc(50vh - 2.5rem);
         }
 
         .message {
-            width: 30rem;
+            width: 40rem;
             text-align: center;
+            font-size: 1.3rem;
         }
 
         .content {
-            display: grid;
-            grid-template-columns: auto auto;
-            row-gap: 2rem;
-            column-gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            transition: all 200ms ease-in-out;
+            border-radius: 2rem;
+            border: #fff 2px double;
+        }
+
+        .name {
+            text-align: center;
+        }
+
+        .item:hover {
+            transform: scale(1.2);
+        }
+
+        @media only screen and (min-width: 900px) {
+            .item {
+                flex-direction: row;
+            }
+        }
+
+        .unity {
+            margin-top: 25vh;
+        }
+
+        .body {
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 10rem;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .socials {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .socials>a>img {
+            width: 96px;
+            height: 96px;
+            transition: all 200ms ease-in-out;
+        }
+
+        .socials>a>img:hover {
+            transform: scale(1.5);
+        }
+
+        #mouse {
+            --top: 0px;
+            --left: 0px;
+            position: fixed;
+            background-color: rgba(0, 210, 196, 0.7);
+            border-radius: 5rem;
+            filter: blur(2rem);
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, -50%);
+            top: var(--top);
+            left: var(--left);
+            z-index: -5;
         }
     </style>
+    <script>
+        document.onmousemove = ({ clientX, clientY }) => {
+            mouse.style.setProperty('--top', clientY + "px");
+            mouse.style.setProperty('--left', clientX + "px");
+        };
+    </script>
 </head>
 
 <body>
+    <div id="mouse"></div>
     <div class="big_message">
         It all begins somewhere...
     </div>
     <div class="content">
-        <div class="circle circle_html4">
-            <img src="./assets/html4.svg" alt="HTML4">
-            <div class="name">HTML4</div>
-        </div>
-        <label for="html4">
-            <div class="message">
-                I used to search for all sorts of tags to use in my school's lab
+        <div class="item">
+            <div class="circle circle_html4">
+                <img src="./assets/html4.svg" alt="HTML4">
+                <div class="name">HTML4</div>
             </div>
-            <div class="time">2019</div>
-        </label>
-        <div class="circle circle_html5">
-            <img src="./assets/html5.svg" alt="HTML5">
-            <div class="name">HTML5</div>
+            <label for="html4">
+                <div class="message">
+                    I used to search for all sorts of tags to use in my school's lab
+                </div>
+                <div class="time">2019</div>
+            </label>
         </div>
-        <label for="html5">
-            <div class="message">
-                Why did my school teach me something that is actually used?
+        <div class="item">
+            <div class="circle circle_html5">
+                <img src="./assets/html5.svg" alt="HTML5">
+                <div class="name">HTML5</div>
             </div>
-            <div class="time">Jul 2020</div>
-        </label>
-        <div class="circle circle_p5">
-            <img src="./assets/p5.svg" alt="p5">
-            <div class="name">p5.js</div>
+            <label for="html5">
+                <div class="message">
+                    Why didn't my school teach me something that is actually used?
+                </div>
+                <div class="time">Jul 2020</div>
+            </label>
         </div>
-        <label for="p5">
-            <div class="message">
-                Learned javascript and game development at the same time with p5!
+        <div class="item">
+            <div class="circle circle_p5">
+                <img src="./assets/p5.svg" alt="p5">
+                <div class="name">p5.js</div>
             </div>
-            <div class="time">Jul 2020 - May 2021</div>
-        </label>
-        <div class="circle circle_matter">
-            <img src="./assets/matter.svg" alt="matter">
-            <div class="name">matter.js</div>
+            <label for="p5">
+                <div class="message">
+                    Learned javascript and game development at the same time with p5!
+                </div>
+                <div class="time">Jul 2020 - May 2021</div>
+            </label>
         </div>
-        <label for="matter">
-            <div class="message">
-                Games with physics are nice!
+        <div class="item">
+            <div class="circle circle_matter">
+                <img src="./assets/matter.svg" alt="matter">
+                <div class="name">matter.js</div>
             </div>
-            <div class="time">Sep 2020 - May 2021</div>
-        </label>
-        <div class="circle circle_discord">
-            <img src="./assets/discord.svg" alt="discord">
-            <div class="name">discord.js</div>
+            <label for="matter">
+                <div class="message">
+                    Games with physics are nice!
+                </div>
+                <div class="time">Sep 2020 - May 2021</div>
+            </label>
         </div>
-        <label for="discord">
-            <div class="message">
-                Making bots for the first time was magical, especially in a chat app
+        <div class="item">
+            <div class="circle circle_discord">
+                <img src="./assets/discord.svg" alt="discord">
+                <div class="name">discord.js</div>
             </div>
-            <div class="time">Jul 2021</div>
-        </label>
-        <div class="circle circle_minecraft">
-            <img src="./assets/minecraft.svg" alt="minecraft">
-            <div class="name">Mods w/ Fabric</div>
+            <label for="discord">
+                <div class="message">
+                    Making bots for the first time was magical, especially in a chat app
+                </div>
+                <div class="time">Jul 2021</div>
+            </label>
         </div>
-        <label for="minecraft">
-            <div class="message">
-                Learned Java while modding minecraft
+        <div class="item">
+            <div class="circle circle_minecraft">
+                <img src="./assets/minecraft.svg" alt="minecraft">
+                <div class="name">Mods w/ Fabric</div>
             </div>
-            <div class="time">Dec 2021 - Jan 2022</div>
-        </label>
-        <div class="circle circle_typescript">
-            <img src="./assets/typescript.svg" alt="typescript">
-            <div class="name">Typescript</div>
+            <label for="minecraft">
+                <div class="message">
+                    Learned Java while modding minecraft
+                </div>
+                <div class="time">Dec 2021 - Jan 2022</div>
+            </label>
         </div>
-        <label for="typescript">
-            <div class="message">
-                I am now addicted to types. This is definately more addictive than cocaine
+        <div class="item">
+            <div class="circle circle_typescript">
+                <img src="./assets/typescript.svg" alt="typescript">
+                <div class="name">Typescript</div>
             </div>
-            <div class="time">Jan 2022</div>
-        </label>
-        <div class="circle circle_pygame">
-            <img src="./assets/pygame.svg" alt="pygame">
-            <div class="name">Pygame</div>
+            <label for="typescript">
+                <div class="message">
+                    I am now addicted to types. This has to be more addictive than cocaine
+                </div>
+                <div class="time">Jan 2022</div>
+            </label>
         </div>
-        <label for="pygame">
-            <div class="message">
-                So you can make games with python!
+        <div class="item">
+            <div class="circle circle_pygame">
+                <img src="./assets/pygame.svg" alt="pygame">
+                <div class="name">Pygame</div>
             </div>
-            <div class="time">Feb 2022</div>
-        </label>
-        <div class="circle circle_flask">
-            <img src="./assets/flask.svg" alt="flask">
-            <div class="name">Flask</div>
+            <label for="pygame">
+                <div class="message">
+                    So you can make games with python!
+                </div>
+                <div class="time">Feb 2022</div>
+            </label>
         </div>
-        <label for="flask">
-            <div class="message">
-                Python is primarily a backend language. Gotta use an axe for a tree
+        <div class="item">
+            <div class="circle circle_flask">
+                <img src="./assets/flask.svg" alt="flask">
+                <div class="name">Flask</div>
             </div>
-            <div class="time">Feb 2022</div>
-        </label>
-        <div class="circle circle_react">
-            <img src="./assets/react.svg" alt="react">
-            <div class="name">React</div>
+            <label for="flask">
+                <div class="message">
+                    Python is primarily a backend language. Gotta use an axe for a tree
+                </div>
+                <div class="time">Feb 2022</div>
+            </label>
         </div>
-        <label for="react">
-            <div class="message">
-                Hey ma! Dynamic webpages are awesome!
+        <div class="item">
+            <div class="circle circle_react">
+                <img src="./assets/react.svg" alt="react">
+                <div class="name">React</div>
             </div>
-            <div class="time">Feb 2022</div>
-        </label>
-        <div class="circle circle_rust">
-            <img src="./assets/rust.svg" alt="rust">
-            <div class="name">Rust</div>
+            <label for="react">
+                <div class="message">
+                    Hey ma! Dynamic webpages are awesome!
+                </div>
+                <div class="time">Feb 2022</div>
+            </label>
         </div>
-        <label for="rust">
-            <div class="message">
-                I KNOW WHEN MY CODE CAN FAIL. That feeling is unmatched
+        <div class="item">
+            <div class="circle circle_rust">
+                <img src="./assets/rust.svg" alt="rust">
+                <div class="name">Rust</div>
             </div>
-            <div class="time">Apr 2022</div>
-        </label>
-        <div class="circle circle_csharp">
-            <img src="./assets/csharp.svg" alt="csharp">
-            <div class="name">C#</div>
+            <label for="rust">
+                <div class="message">
+                    I KNOW WHEN MY CODE CAN FAIL. That feeling is unmatched
+                </div>
+                <div class="time">Apr 2022</div>
+            </label>
         </div>
-        <label for="csharp">
-            <div class="message">
-                I smell JAAAAAVAAAAA. But more consistent as a language. I don't even need to check if a feature exists
-                in this language, because it already does
+        <div class="item">
+            <div class="circle circle_csharp">
+                <img src="./assets/csharp.svg" alt="csharp">
+                <div class="name">C#</div>
             </div>
-            <div class="time">Jul 2022</div>
-        </label>
-        <div class="circle circle_opengl">
-            <img src="./assets/opengl.svg" alt="opengl">
-            <div class="name">OpenGL</div>
+            <label for="csharp">
+                <div class="message">
+                    I smell JAAAAAVAAAAA. But more consistent as a language. I don't even need to check if a feature
+                    exists
+                    in this language, because it already does
+                </div>
+                <div class="time">Jul 2022</div>
+            </label>
         </div>
-        <label for="opengl">
-            <div class="message">
-                Shaders are so powerful, and hard. I thought being good at plotting graphs would help, it doesn't
+        <div class="item">
+            <div class="circle circle_opengl">
+                <img src="./assets/opengl.svg" alt="opengl">
+                <div class="name">OpenGL</div>
             </div>
-            <div class="time">Aug 2022</div>
-        </label>
-        <div class="circle circle_reactnative">
-            <img src="./assets/reactnative.svg" alt="reactnative">
-            <div class="name">reactnative</div>
+            <label for="opengl">
+                <div class="message">
+                    Shaders are so powerful, and hard. I thought being good at plotting graphs would help, it doesn't
+                </div>
+                <div class="time">Aug 2022</div>
+            </label>
         </div>
-        <label for="reactnative">
-            <div class="message">
-                React on mobile sounds like a quicktap approach. Holy shit the number of warning kill me
+        <div class="item">
+            <div class="circle circle_reactnative">
+                <img src="./assets/react.svg" alt="reactnative">
+                <div class="name">React Native</div>
             </div>
-            <div class="time">Oct 2022</div>
-        </label>
-        <div class="circle circle_cometos">
-            <img src="./assets/cometos.svg" alt="cometos">
-            <div class="name">CometOS</div>
+            <label for="reactnative">
+                <div class="message">
+                    React on mobile sounds like a quicktap approach. Holy shit the number of warning kill me
+                </div>
+                <div class="time">Oct 2022</div>
+            </label>
         </div>
-        <label for="cometos">
-            <div class="message">
-                Made an OS to learn how to make an OS, and how to write rust properly. I do not recommand running this.
-                It's terrible
+        <div class="item">
+            <div class="circle circle_cometos">
+                <img src="./assets/cometos.svg" alt="cometos">
+                <div class="name">CometOS</div>
             </div>
-            <div class="time">Oct 2022</div>
-        </label>
-        <div class="circle circle_comrade">
-            <img src="./assets/comrade.svg" alt="comrade">
-            <div class="name">Comrade</div>
+            <label for="cometos">
+                <div class="message">
+                    Made an OS to learn how to make an OS, and how to write rust properly. I do not recommand running
+                    this.
+                    It's terrible
+                </div>
+                <div class="time">Oct 2022</div>
+            </label>
         </div>
-        <label for="comrade">
-            <div class="message">
-                Lexers, Parsers, Abstract Syntax Trees. My favourite project as of 2024, learned sooo much
+        <div class="item">
+            <div class="circle circle_comrade">
+                <img src="./assets/comrade.svg" alt="comrade">
+                <div class="name">Comrade</div>
             </div>
-            <div class="time">Feb 2023</div>
-        </label>
-        <div class="circle circle_pandas">
-            <img src="./assets/pandas.svg" alt="pandas">
-            <div class="name">Pandas</div>
+            <label for="comrade">
+                <div class="message">
+                    Lexers, Parsers, Abstract Syntax Trees. My favourite project as of 2024, learned sooo much
+                </div>
+                <div class="time">Feb 2023</div>
+            </label>
         </div>
-        <label for="pandas">
-            <div class="message">
-                Powerful data science stuff.
+        <div class="item">
+            <div class="circle circle_pandas">
+                <img src="./assets/pandas.svg" alt="pandas">
+                <div class="name">Pandas</div>
             </div>
-            <div class="time">Mar 2023</div>
-        </label>
-        <div class="circle circle_numpy">
-            <img src="./assets/numpy.svg" alt="numpy">
-            <div class="name">Numpy</div>
+            <label for="pandas">
+                <div class="message">
+                    Powerful data science stuff.
+                </div>
+                <div class="time">Mar 2023</div>
+            </label>
         </div>
-        <label for="numpy">
-            <div class="message">
-                Powerful data science stuff.
+        <div class="item">
+            <div class="circle circle_numpy">
+                <img src="./assets/numpy.svg" alt="numpy">
+                <div class="name">Numpy</div>
             </div>
-            <div class="time">Mar 2023</div>
-        </label>
-        <div class="circle circle_cpp">
-            <img src="./assets/cpp.svg" alt="cpp">
-            <div class="name">C++</div>
+            <label for="numpy">
+                <div class="message">
+                    Powerful data science stuff.
+                </div>
+                <div class="time">Mar 2023</div>
+            </label>
         </div>
-        <label for="cpp">
-            <div class="message">
-                Learned it the right way. The project setup is like 80% of the work
+        <div class="item">
+            <div class="circle circle_cpp">
+                <img src="./assets/cpp.svg" alt="cpp">
+                <div class="name">C++</div>
             </div>
-            <div class="time">Mar 2023</div>
-        </label>
-        <div class="circle circle_c">
-            <img src="./assets/c.svg" alt="c">
-            <div class="name">C</div>
+            <label for="cpp">
+                <div class="message">
+                    Learned it the right way. The project setup is like 80% of the work
+                </div>
+                <div class="time">Mar 2023</div>
+            </label>
         </div>
-        <label for="c">
-            <div class="message">
-                Learned it the right way. Sometimes I wish everything was written in C, it feels so simple and powerful.
-                It's like monkhood of programming
+        <div class="item">
+            <div class="circle circle_c">
+                <img src="./assets/c.svg" alt="c">
+                <div class="name">C</div>
             </div>
-            <div class="time">Jun 2023</div>
-        </label>
-        <div class="circle circle_etherSpace">
-            <img src="./assets/etherSpace.svg" alt="etherSpace">
-            <div class="name">etherSpace</div>
+            <label for="c">
+                <div class="message">
+                    Learned it the right way. Sometimes I wish everything was written in C, it feels so simple and
+                    powerful.
+                    It's like monkhood of programming
+                </div>
+                <div class="time">Jun 2023</div>
+            </label>
         </div>
-        <label for="etherSpace">
-            <div class="message">
-                A terrible physics engine. That's it
+        <div class="item">
+            <div class="circle circle_etherSpace">
+                <img src="./assets/etherSpace.svg" alt="etherSpace">
+                <div class="name">etherSpace</div>
             </div>
-            <div class="time">Oct 2023</div>
-        </label>
-        <div class="circle circle_remotion">
-            <img src="./assets/remotion.svg" alt="remotion">
-            <div class="name">Remotion</div>
+            <label for="etherSpace">
+                <div class="message">
+                    A terrible physics engine. That's it
+                </div>
+                <div class="time">Oct 2023</div>
+            </label>
         </div>
-        <label for="remotion">
-            <div class="message">
-                I hate video editing, so I will code them instead!
+        <div class="item">
+            <div class="circle circle_remotion">
+                <img src="./assets/remotion.svg" alt="remotion">
+                <div class="name">Remotion</div>
             </div>
-            <div class="time">Mar 2024</div>
-        </label>
-        <div class="circle circle_raylib">
-            <img src="./assets/raylib.svg" alt="raylib">
-            <div class="name">Raylib</div>
+            <label for="remotion">
+                <div class="message">
+                    I hate video editing, so I will code them instead!
+                </div>
+                <div class="time">Mar 2024</div>
+            </label>
         </div>
-        <label for="raylib">
-            <div class="message">
-                I went from making games in javascript, to python and now in zig + C. The amount of bloat is decreasing
-                as time goes on
+        <div class="item">
+            <div class="circle circle_raylib">
+                <img src="./assets/raylib.png" alt="raylib">
+                <div class="name">Raylib</div>
             </div>
-            <div class="time">Jul 2024</div>
-        </label>
-        <div class="circle circle_zig">
-            <img src="./assets/zig.svg" alt="zig">
-            <div class="name">Zig</div>
+            <label for="raylib">
+                <div class="message">
+                    I went from making games in javascript, to python and now in zig + C. The amount of bloat is
+                    decreasing
+                    as time goes on
+                </div>
+                <div class="time">Jul 2024</div>
+            </label>
         </div>
-        <label for="zig">
-            <div class="message">
-                It's like rust, but C. LOVE IT
+        <div class="item">
+            <div class="circle circle_zig">
+                <img src="./assets/zig.svg" alt="zig">
+                <div class="name">Zig</div>
             </div>
-            <div class="time">Jul 2024</div>
-        </label>
-        <div class="circle circle_nixos">
-            <img src="./assets/nixos.svg" alt="nixos">
-            <div class="name">Dual booted NixOS</div>
+            <label for="zig">
+                <div class="message">
+                    It's like rust, but C. LOVE IT
+                </div>
+                <div class="time">Jul 2024</div>
+            </label>
         </div>
-        <label for="nixos">
-            <div class="message">
-                Hard to get used to, but definately the safer unix apporach
+        <div class="item">
+            <div class="circle circle_nixos">
+                <img src="./assets/nixos.svg" alt="nixos">
+                <div class="name">Dual booted NixOS</div>
             </div>
-            <div class="time">Aug 2024</div>
-        </label>
-        <div class="circle circle_shadowtalk">
-            <img src="./assets/shadowtalk.svg" alt="shadowtalk">
-            <div class="name">ShadowTalk</div>
+            <label for="nixos">
+                <div class="message">
+                    Hard to get used to, but definately the safer unix apporach
+                </div>
+                <div class="time">Aug 2024</div>
+            </label>
         </div>
-        <label for="shadowtalk">
-            <div class="message">
-                First time doing end to end encryption!
+        <div class="item">
+            <div class="circle circle_shadowtalk">
+                <img src="./assets/shadowtalk.svg" alt="shadowtalk">
+                <div class="name">ShadowTalk</div>
             </div>
-            <div class="time">Sep 2024</div>
-        </label>
+            <label for="shadowtalk">
+                <div class="message">
+                    First time doing end to end encryption!
+                </div>
+                <div class="time">Sep 2024</div>
+            </label>
+        </div>
     </div>
-    <div class="message">
+    <div class="body">
+        This is where I am now. 17 years old. Studying at Thapar Institute of Engineering and Technology
+        <div class="socials">
+            <a href="https://github.com/FloatingComet62"><img src="./social/github.svg" alt="Github"></a>
+            <a href="https://www.linkedin.com/in/aargh-rai-40900524a/"><img src="./social/linkedin.svg"
+                    alt="LinkedIn"></a>
+            <a href="https://floatingcomet62.tumblr.com/"><img src="./social/tumblr.svg" alt="Tumblr"></a>
+            <a href="https://x.com/FloatingComet62"><img src="./social/twitter.svg" alt="Twitter"></a>
+        </div>
+    </div>
+    <div class=" unity message">
         Oh I did learn unity at one point but fuck them now
     </div>
 </body>
