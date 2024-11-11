@@ -100,7 +100,7 @@
 
         .item {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             transition: all 200ms ease-in-out;
             border-radius: 2rem;
             border: #fff 2px double;
@@ -114,9 +114,10 @@
             transform: scale(1.2);
         }
 
-        @media only screen and (min-width: 900px) {
+        @media screen and (max-width: 900px) {
             .item {
-                flex-direction: row;
+                flex-direction: column;
+                opacity: 0;
             }
         }
 
@@ -151,6 +152,18 @@
             transform: scale(1.5);
         }
 
+        .nav {
+            display: flex;
+            gap: 2rem;
+            margin-left: 1rem;
+            margin-right: auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
         #mouse {
             --top: 0px;
             --left: 0px;
@@ -175,6 +188,10 @@
 </head>
 
 <body>
+    <div class="nav">
+        <a href="./index.html" class="home">/home</a>
+        <a href="./blogs.html" class="blog">/mnt/blog</a>
+    </div>
     <div id="mouse"></div>
     <div class="big_message">
         It all begins somewhere...
@@ -511,7 +528,7 @@
             <a href="https://x.com/FloatingComet62"><img src="./social/twitter.svg" alt="Twitter"></a>
         </div>
     </div>
-    <div class=" unity message">
+    <div class="unity message">
         Oh I did learn unity at one point but fuck them now
     </div>
 </body>
