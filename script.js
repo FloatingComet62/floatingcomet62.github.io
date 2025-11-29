@@ -1,53 +1,173 @@
-let current = -1;
-const elements = [];
-function spawn() {
-  if (current == -1) {
-    elements.push({ x: 0, y: 0, width: 1, height: 1 })
-    current = 0;
-    return;
+const neofetchLogo = [
+"                                       %%%##%#                                           ",
+"                                    %%%%%%##%#%%%%                                       ",
+"                                  %%#**+++*##@@@#@@@%%#%@%%##                            ",
+"                               *#@%*#*+++++++#@@%@@@###**#%#@%                           ",
+"                     **%%**+=-+==-++++==*+++*%#*%#*++-+=-==+**+*%@@                      ",
+"                   =%@@@@@@#*+==-==-=+=#*+##********=+=++=++=++++*@@@%   %               ",
+"                 #++=+++=#=--------=#%#*#%####++====--=--=-=====++*#%###*#               ",
+"                  +-======---------=@%*=====++==-----------==+-==+++#**+@#               ",
+"               #+===#%#+==-----::------==*=--------------:--------==+*#*+                ",
+"             ====**=======---::::---:--------------------::--------=-+=++**              ",
+"            #==+***====------::::::::::----------------:---:-:--:--=-=+++*++*            ",
+"          ##*++=+==----------:::::::::-----------------::=--------======+++++*           ",
+"        #**+=+==+=--------:----::---------------------------------:---=+*+##++#          ",
+"       #*+==++====--:::::-::::::---:----------------------::--:::-----=-=+= #+ *         ",
+"        ===+=+====------:::-::--::::--::----:--::---:-:---::::-::-------===++ *+         ",
+"     #*=-=-----=+=----:::---:--::------------:-::::::::-::::::------------==++==*        ",
+"      #--==------::::----------:-----------------:-:::---::::---------------==+=*        ",
+"      =-==-=-----::---------------------=-----------::-----:::-:---:----------===        ",
+"       ==-----:::-:::-----------------------:-::---::::-:---:-:::--:-----------===       ",
+"      +--:--::----------------------====-----::-:::-:::-:-----:--:---:-::-------=--#     ",
+"      =---:::----:----------------======-----:::::--:---::-::---:::-::-::----------      ",
+"       =------:::::---:----------====++===----::::--:::::-:::::-::-----:----:::---*      ",
+"       #=-----::-----==--=-=---=====+++++===--:-:::::::--::::::--::::------:::::--       ",
+"       +=---::::----====-==--====+++++++++++==---::::::::::::::--:::::----::::::-=       ",
+"      #=-------=---------------==++++++++++++++==-:::::::::::::-:-:::::-:::::::--=       ",
+"        # =--==+++===---::::---=====+++++++++++++++=--::::-::::::::-:::--::::::::=       ",
+"        ++ +====++===-:---===+=--=-= ==================-:::::::::::--==:--:::-:::-       ",
+"         #++=--:-+=:-============--===++++++++++++++==--:::::::::------=*::::-:::#       ",
+"       *#+  +++=::--=====-----===----==+++++++++++++==--:::::::-----=====+-::-:--        ",
+"     =-==-   #+=::=---====----=*++=--===++++++****++==-----=-------=++====+:--::-        ",
+"      -=##    =-- +-=--------=========++++++******+++=--:---==+==-=++++===+::-::-        ",
+"      +=##*      --+-------=====-===+++++++*******++=-------++++=---=++==+-::-::*        ",
+"       = --     --++=--:======++-++++++++++********+=-==--===+*======+*=++::::-:+*       ",
+"       *++-   ---++===:-==++++:=+++++++++++******+*++==---+=++*======++++:-----          ",
+"        =#+  ---+++====--==+++++++++++++++++++++++++==+===+*++===+=+++++::-::--          ",
+"          *----++++++======+++++++++++++++++++++++++====++**+++=+**+=++.:--::-+          ",
+"            ++++==++++++=-==++++++++++++++++++++++====+==++*++++++++*+:::-:::-           ",
+"             +==-:::::==--===++++++++++++++++++++====+=++++*=++++++*+---:::::-           ",
+"               +===========+==+++++++++++++++=+++=========++-++++++++=:::::-===-:        ",
+"               #*+=------======+++++++++++=======+===+=======+++++++++-:.:------==:      ",
+"                =---:::----=====++++++=================+=====++++++++++-:-----::--++     ",
+"                +==+==-=-------==+++++==================+====+++++++++-:--:---:::---=*   ",
+"                **+=-==++--==---==+++=================+=======++++++=-:--:---::::::--==##",
+"                  =-+%+**++-::---=+++=================-==--=-==++++=----:----:::::::----=",
+"                  %=-:..:-==-================-=-=----------=-==++==-:::::----:::::::-:-:-",
+"                   %#+*===-================-=---==--------:---====-::::::::--::::::::-:--",
+"                   *====--===============-------------------------:::::::::::::::::-::--:",
+"                    %=-----=============--------------:---:-------::::::::::-::::::::----",
+"                    :%+=--=============-----------:-----:--------:::::::::::::::::::::--=",
+"                   %:=#*+============----:--:---:::::-:---------::::::::::::::::::::::---",
+"                   .::%*+===========--::-:-::-::::::-----------::::::::::::::::::::::----",
+"                  %:::+*+======-----:::::::::::::::::---------::.::::::::::::::::::------",
+"                  **+-.-=--------:::::::::::::::::---------==::.::::::::::::::::::-----+=",
+"              -...:::::...:::::::::::....:::::::----------=-:::::::::::::::::::::-----=-=",
+"             %..::............ ..  ......:-:::-------------:::::::::::::::::::::--::=----",
+"              ..................  ........:----------=--=-:::::::::::::::::::::-:::=--=::",
+"              ................    .........----------=---::..::::::::::::.::::-::-----:::",
+]
+
+function getAge(birthDateStr) {
+  const today = new Date();
+  const birth = new Date(birthDateStr);
+
+  let years = today.getFullYear() - birth.getFullYear();
+  let months = today.getMonth() - birth.getMonth();
+  let days = today.getDate() - birth.getDate();
+
+  if (days < 0) {
+    months--;
+    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
   }
-  const horizontalSplit = elements[current].width * window.innerWidth > elements[current].height * window.innerHeight;
-  if (horizontalSplit) {
-    elements[current].width /= 2;
-    const curr = elements[current];
-    elements.push({ x: curr.x + curr.width, y: curr.y, width: curr.width, height: curr.height });
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  return { years, months, days };
+}
+
+function formatAge({ years, months, days }) {
+  let output = `${years} years`;
+  if (months == 0) {
+  } else if (months == 1) {
+    output += `, 1 month`
   } else {
-    elements[current].height /= 2;
-    const curr = elements[current];
-    elements.push({ x: curr.x, y: curr.y + curr.height, width: curr.width, height: curr.height });
+    output += `, ${months} months`;
+  }
+
+  if (days == 0) {
+  } else if (days == 1) {
+    output += `, 1 day`
+  } else {
+    output += `, ${days} days`;
+  }
+
+  return output;
+}
+
+function loadNeoFetchLogo(fontSize) {
+  const textRoot = document.getElementById("logo");
+  textRoot.setAttribute("font-size", fontSize);
+  for (let i = 0; i < neofetchLogo.length; i++) {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+    node.setAttribute("x", "0");
+    node.setAttribute("y", (fontSize * i).toString());
+    node.textContent = neofetchLogo[i];
+    textRoot.appendChild(node);
   }
 }
 
-const padding = 10;
-function updateElements() {
-  document.body.innerHTML = "";
-  for (let i = 0; i < elements.length; i++) {
-    const element = elements[i];
-    const div = document.createElement("div");
-    div.style.position = "absolute";
-    div.style.width = element.width * window.innerWidth + "px";
-    div.style.height = element.height * window.innerHeight + "px";
-    div.style.translate = element.x * window.innerWidth + "px " + element.y * window.innerHeight + "px";
-    div.onclick = () => {
-      current = i;
-      updateElements();
-    }
-
-    const filling = document.createElement("div");
-    filling.style.backgroundColor = i == current ? "red" : "blue";
-    filling.style.translate = `${padding}px ${padding}px`;
-    filling.style.width = `calc(100% - ${2 * padding}px)`;
-    filling.style.height = `calc(100% - ${2 * padding}px)`;
-    div.appendChild(filling);
-
-    document.body.appendChild(div);
+function clearNeofetchLogo() {
+  const textRoot = document.getElementById("logo");
+  while (textRoot.firstChild) {
+    textRoot.removeChild(textRoot.firstChild);
   }
 }
 
-window.onresize = updateElements;
-window.onkeydown = (e) => {
-  if (e.key == "t") {
-    spawn();
-    updateElements();
+function loadAge() {
+  const uptime = document.getElementById("uptime");
+  uptime.innerText = formatAge(getAge("2007-02-19"));
+
+  const keys = document.getElementsByClassName("key");
+  for (const key of keys) {
+    const colon = document.createElement("span")
+    colon.classList.add("colon");
+    colon.innerText = ":";
+    key.appendChild(colon);
   }
 }
+
+function formatNeofetchInfo() {
+  const width = 60;
+  const bars = document.getElementsByClassName("bar");
+  for (const bar of bars) {
+    const lengthToAdd = width - bar.innerText.length - 1;
+    let barStr = "";
+    for (let i = 0; i < lengthToAdd; i++)
+      barStr += "—";
+    bar.innerText += " " + barStr;
+  }
+}
+
+function setCanvasSize(dim) {
+  const d = `${dim}px`;
+  const svg = document.getElementById("svg");
+  const rect = document.getElementById("rect");
+  svg.setAttribute("width", d);
+  svg.setAttribute("height", d);
+  rect.setAttribute("width", d);
+  rect.setAttribute("height", d);
+}
+
+function main() {
+  if (window.innerWidth > 1000) {
+    clearNeofetchLogo();
+    loadNeoFetchLogo(window.innerWidth / 200);
+    formatNeofetchInfo();
+    setCanvasSize(window.innerWidth/3);
+  } else {
+    clearNeofetchLogo();
+    loadNeoFetchLogo(window.innerWidth / 90);
+    formatNeofetchInfo();
+    setCanvasSize(window.innerWidth/1.5);
+  }
+}
+
+window.onload = () => {
+  loadAge();
+  main();
+}
+window.onresize = () => main();
