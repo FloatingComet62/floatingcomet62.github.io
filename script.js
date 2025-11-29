@@ -160,9 +160,9 @@ function main() {
     setCanvasSize(window.innerWidth/3);
   } else {
     clearNeofetchLogo();
-    loadNeoFetchLogo(window.innerWidth / 90);
+    loadNeoFetchLogo(window.innerWidth / 60);
     formatNeofetchInfo();
-    setCanvasSize(window.innerWidth/1.5);
+    setCanvasSize(window.innerWidth);
   }
 }
 
