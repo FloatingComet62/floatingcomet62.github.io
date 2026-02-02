@@ -1,0 +1,29 @@
+.projects {
+  width: 80vw;
+}
+.project {
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+  gap: 0.2rem;
+  background-color: #11111b;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.cmd {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+.carot {
+  color: #a5d6ff;
+}
+.bin {
+  color: #ffa657;
+}
+.file {
+  color: #a6e3a1;
+}
+.content {
+  font-size: 1.05rem;
+}
