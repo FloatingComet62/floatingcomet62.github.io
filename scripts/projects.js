@@ -5,6 +5,7 @@ const projects = [
   p("sat-robot-mesh-network", "An ESP32 mesh network designed to provide the SAT Robot (built by PLEX) with continuous internet access in spots without internet"),
   p("stockchain", "A custom blockchain, implemented for trading"),
   p("f1-elo-engine", "An ELO system for ranking Formula One Drivers, on a lap by lap basis"),
+  p("hacktu7.0", "Organised HackTU 7.0, with 500+ participants, 10+ judges from across the globe & 5 lakhs in prizes"),
 ];
 
 function p(name, description) {
