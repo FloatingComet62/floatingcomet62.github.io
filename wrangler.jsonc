@@ -12,5 +12,11 @@
 	},
 	"observability": {
     "enabled": true
-  }
+  },
+  "routes": [
+    {
+      "pattern": "aarghrai.com",
+      "custom_domain": true
+    }
+  ]
 }
