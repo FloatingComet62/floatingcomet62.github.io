@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aargh Rai is a proficient programmer who is particularly interested in low level systems, however posses a lot of experience and skill in all forms of tech, ranging from Web dev, App dev, IoT, Edge computing & Cloud computing. Outside engineering skills Aargh has also lead and managed multiple projects & events within the most coveted tech society of Thapar Institute of Engineering and Technology, Creative Computing Society (CCS).">
+    <title>Aargh Rai</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  </head>
+  <body>
+    <nav>
+      <a href="/">/boot</a>
+      <a href="/projects">/dev</a>
+    </nav>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    margin-top: 10vh;
+    background: #161b22;
+    color: #fff;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
+  a {
+    font-size: 1.5rem;
+    color: #a5a6ff;
+    text-decoration: none;
+    margin-bottom: 3rem;
+  }
+
+  /* Modern browsers */
+  @supports (scrollbar-width: thin) {
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: #a5d6aa #1f1f1f;
+    }
+  }
+
+  /* Legacy browsers (WebKit) */
+  @supports selector(::-webkit-scrollbar) {
+    body::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    body::-webkit-scrollbar-track {
+      background: #1f1f1f;
+      border-radius: 10px;
+    }
+    body::-webkit-scrollbar-thumb {
+      background: #a5d6aa;
+      border-radius: 10px;
+    }
+  }
+</style>
