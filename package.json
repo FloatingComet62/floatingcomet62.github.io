@@ -10,10 +10,10 @@
     "wrangler": "wrangler"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.12",
-    "astro": "^5.17.1"
+    "@astrojs/cloudflare": "^12.6.12"
   },
   "devDependencies": {
+    "astro": "^6.0.8",
     "wrangler": "^4.71.0"
   }
 }

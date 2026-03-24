@@ -1,7 +1,8 @@
 # Dev server
 [group('dev')]
 dev:
-  pnpm astro dev
+  pnpm astro build
+  pnpm wrangler dev
 
 # Build the project 
 [group('dev')]
